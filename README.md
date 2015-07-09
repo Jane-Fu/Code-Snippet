@@ -1,5 +1,11 @@
 # 一份很受欢迎的前端代码指南
 
+原文地址：[https://github.com/bendc/frontend-guidelines/blob/master/README.md](https://github.com/bendc/frontend-guidelines/blob/master/README.md)
+
+中文翻译版原文: [http://segmentfault.com/a/1190000002587334?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly](http://segmentfault.com/a/1190000002587334?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly)
+
+放到自己的github上备份
+
 ## HTML
 
 ### 语义化标签
