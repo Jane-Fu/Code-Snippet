@@ -1,11 +1,12 @@
-一份很受欢迎的前端代码指南
+# 一份很受欢迎的前端代码指南
 
-HTML
+## HTML
 
-语义化标签
+### 语义化标签
 
 HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你能从这些丰富的标签库中受益。
 
+```html
 <!-- bad -->
 <div id="main">
   <div class="article">
@@ -27,8 +28,10 @@ HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你�
     <p>…</p>
   </article>
 </main>
+```
 请确保正确使用语义化的标签，错误的用法甚至不如保守的用法。
 
+```html
 <!-- bad -->
 <h1>
   <figure>
@@ -40,10 +43,11 @@ HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你�
 <h1>
   <img alt=Company src=logo.png>
 </h1>
-简洁
+```
+###简洁
 
 确保代码简洁性，不要再采用XHTML的旧做法。
-
+```html
 <!-- bad -->
 <!doctype html>
 <html lang=en>
@@ -76,7 +80,8 @@ HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你�
   </label>
   <script src=main.js></script>
 </html>
-可用性
+```
+### 可用性
 
 可用性不应该是事后才考虑的事情。你不必成为WCAG专家来改进网站，你可以通过简单的修改做出不错的效果，例如；
 
@@ -84,15 +89,17 @@ HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你�
 确保链接和按钮正确使用（不要用<div class=button>这种粗暴的做法）
 不依赖于颜色来传达信息
 给表单做好lable标记
+```html
    <!-- bad -->
     <h1><img alt="Logo" src="logo.png"></h1>
 
     <!-- good -->
     <h1><img alt="My Company, Inc." src="logo.png"></h1>
-语言
+```
+### 语言
 
 定义语言和字符编码是可选项，建议在文档级别处定义。使用UTF-8编码。
-
+```html
 <!-- bad -->
 <!doctype html>
 <title>Hello, world.</title>
@@ -103,10 +110,12 @@ HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你�
   <meta charset=utf-8>
   <title>Hello, world.</title>
 </html>
-性能
+```
+### 性能
 
 除非有非要在加载内容前加载脚本的必要性由，不然别这样做，这样会阻碍网页渲染。如果你的样式表很大，必须独立放到一个文件里。两次HTTP 请求不会显著降低性能。
 
+```html
 <!-- bad -->
 <!doctype html>
 <meta charset=utf-8>
@@ -120,12 +129,13 @@ HTML5 提供了很多语义化元素，更好地帮助描述内容。希望你�
 <title>Hello, world.</title>
 <p>...</p>
 <script src=analytics.js></script>
-CSS
+```
+## CSS
 
-分号
+### 分号
 
 不能漏写分号
-
+```css
 /* bad */
 div {
   color: red
@@ -135,10 +145,11 @@ div {
 div {
   color: red;
 }
-盒模型
+```
+### 盒模型
 
 整个文档的盒模型应该要相同，最好使用global * { box-sizing: border-box; }定义。不要修改某个元素的盒模型。
-
+```css
 /* bad */
 div {
   width: 100%;
@@ -150,10 +161,11 @@ div {
 div {
   padding: 10px;
 }
-流
+```
+### 流
 
 尽量不要改变元素默认行为。保持默认的文本流。比如，移出一个图片下面的一个白块，不影响原本的显示：
-
+```css
 /* bad */
 img {
   display: block;
@@ -177,20 +189,23 @@ div {
   width: 100px;
   margin-left: auto;
 }
-定位
+```
+### 定位
 
 有很多CSS定位方法，尽量避免使用以下方法，根据性能排序：
 
+```css
 display: block;
 display: flex;
 position: relative;
 position: sticky;
 position: absolute;
 position: fixed;
-选择器
+```
+### 选择器
 
 紧密耦合DOM选择器，三个层级以上建议加class：
-
+```css
 /* bad */
 div:first-of-type :last-child > p ~ *
 
@@ -207,10 +222,11 @@ img[src$=svg], ul > li:first-child {
 [src$=svg], ul > :first-child {
   opacity: 0;
 }
-指明
+```
+### 指明
 
 不要让代码难于重写，让选择器更精确，减少ID、避免使用!important
-
+```css
 /* bad */
 .bar {
   color: green !important;
@@ -226,10 +242,11 @@ img[src$=svg], ul > li:first-child {
 .foo {
   color: red;
 }
-覆盖
+```
+### 覆盖
 
 覆盖样式会使维护和调试更困难，所以要尽量避免。
-
+```css
 /* bad */
 li {
   visibility: hidden;
@@ -242,10 +259,11 @@ li:first-child {
 li + li {
   visibility: hidden;
 }
-继承
+```
+### 继承
 
 不要把可继承的样式重复声明：
-
+```css
 /* bad */
 div h1, div p {
   text-shadow: 0 1px 0 #fff;
@@ -255,10 +273,12 @@ div h1, div p {
 div {
   text-shadow: 0 1px 0 #fff;
 }
-简洁
+```
+### 简洁
 
 保持代码的简洁。使用属性缩写。不必要的值不用写。
 
+```css
 /* bad */
 div {
   transition: all 1s;
@@ -276,10 +296,11 @@ div {
   top: calc(50% - 10px);
   padding: 5px 10px 20px;
 }
-语言
+```
+### 语言
 
 能用英文的时候不用数字。
-
+```css
 /* bad */
 :nth-child(2n + 1) {
   transform: rotate(360deg);
@@ -289,10 +310,11 @@ div {
 :nth-child(odd) {
   transform: rotate(1turn);
 }
-供应商的前缀
+```
+### 供应商的前缀
 
 砍掉过时的供应商前缀。必须使用时，需要放在标准属性前：
-
+```css
 /* bad */
 div {
   transform: scale(2);
@@ -311,10 +333,12 @@ div {
   transform: scale(2);
   transition: 1s;
 }
-动画
+```
+### 动画
 
 除了变形和改变透明度用animation，其他尽量使用transition。
 
+```css
 /* bad */
 div:hover {
   animation: move 1s forwards;
@@ -330,10 +354,11 @@ div:hover {
   transition: 1s;
   transform: translateX(100px);
 }
-单位
+```
+### 单位
 
 可以不用单位时就不用。建议用rem。时间单位用s比ms好。
-
+```css
 /* bad */
 div {
   margin: 0px;
@@ -349,10 +374,11 @@ div {
   line-height: 1.5;
   transition: .5s;
 }
-颜色
+```
+### 颜色
 
 需要做透明效果是用rgba，否则都用16进制表示：
-
+```css
 /* bad */
 div {
   color: hsl(103, 54%, 43%);
@@ -362,10 +388,11 @@ div {
 div {
   color: #5a3;
 }
+```
 绘图
 
 减少HTTPS请求，尽量用CSS绘图替代图片：
-
+```css
 /* bad */
 div::before {
   content: url(white-circle.svg);
@@ -380,8 +407,9 @@ div::before {
   border-radius: 50%;
   background: #fff;
 }
-注释
-
+```
+### 注释
+```css
 /* bad */
 div {
   // position: relative;
@@ -393,12 +421,13 @@ div {
   /* position: relative; */
   will-change: transform;
 }
-JavaScript
+```
+## JavaScript
 
-性能
+### 性能
 
 有可读性、正确性和好的表达比性能更重要。JavaScript基本上不会是你的性能瓶颈。有些可优化细节例如：图片压缩、网络接入、DOM文本流。如果你只能记住本指南的一条规则，那就记住这条吧。
-
+```js
 // bad (albeit way faster)
 const arr = [1, 2, 3, 4];
 const len = arr.length;
@@ -416,10 +445,12 @@ const isEven = n => n % 2 == 0;
 const square = n => n * n;
 
 const result = arr.filter(isEven).map(square);
-Statelessness
+```
+### Statelessness
 
 尽量保持代码功能简单化，每个方法都对其他其他代码没有负影响。不使用外部数据。返回一个新对象而不是覆盖原有的对象。
 
+```js
 // bad
 const merge = (target, ...sources) => Object.assign(target, ...sources);
 merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
@@ -436,19 +467,21 @@ const toArray = obj => [].slice.call(obj);
 const toArray = (() =>
   Array.from ? Array.from : obj => [].slice.call(obj)
 )();
-严格条件
+```
+### 严格条件
 
 在非必要严格条件的情况不要使用。
-
+```js
 // bad
 if (x === undefined || x === null) { ... }
 
 // good
 if (x == undefined) { ... }
-对象
+```
+### 对象
 
 不要在循环里强制改变对象的值，，可以利用array.prototype方法。
-
+```js
 // bad
 const sum = arr => {
   var sum = 0;
@@ -490,13 +523,14 @@ const createDivs = howMany => {
   return createDivs(howMany - 1);
 };
 createDivs(5);
-Arguments
+```
+### Arguments
 
 忘记arguments对象吧，其他参数是更好的选择，因为：
 
 它已经被定义
 它是一个真的数组，很方便使用
-
+```js
 // bad
 const sortNumbers = () =>
   Array.prototype.slice.call(arguments).sort();
@@ -515,10 +549,11 @@ greet.apply(null, person);
 
 // good
 greet(...person);
-Bind
+```
+### Bind
 
 不用bind()方法，这有更好的选择：
-
+```js
 // bad
 ["foo", "bar"].forEach(func.bind(this));
 
@@ -545,10 +580,11 @@ const person = {
     return `Hello ${full()}`;
   }
 }
-更好的排序
+```
+### 更好的排序
 
 避免多重嵌套：
-
+```js
 // bad
 [1, 2, 3].map(num => String(num));
 
@@ -568,10 +604,11 @@ mult2(plus1(5)); // => 12
 const pipeline = (...funcs) => val => funcs.reduce((a, b) => b(a), val);
 const addThenMult = pipeline(plus1, mult2);
 addThenMult(5); // => 12
-缓存
+```
+### 缓存
 
 缓存性能测试，大数据结构和任何高代价的操作。
-
+```js
 // bad
 const contains = (arr, value) =>
   Array.prototype.includes
@@ -586,8 +623,9 @@ const contains = (() =>
     : (arr, value) => arr.some(el => el === value)
 )();
 contains(["foo", "bar"], "baz"); // => false
-变量
-
+```
+### 变量
+```js
 const 优于 let， let 优于 var。
 
 // bad
@@ -598,10 +636,11 @@ obj["foo" + "bar"] = "baz";
 const obj = {
   ["foo" + "bar"]: "baz"
 };
-条件判断
+```
+### 条件判断
 
 用多个if，优于 if 、else if、else 和switch。
-
+```js
 // bad
 var grade;
 if (result < 50)
@@ -619,10 +658,11 @@ const grade = (() => {
     return "good";
   return "excellent";
 })();
-对象的操作
+```
+### 对象的操作
 
 避免使用for...in。
-
+```js
 const shared = { foo: "foo" };
 const obj = Object.create(shared, {
   bar: {
@@ -639,10 +679,11 @@ for (var prop in obj) {
 
 // good
 Object.keys(obj).forEach(prop => console.log(prop));
-使用map
+```
+### 使用map
 
 合理使用的情况下，map更强大：
-
+```js
 // bad
 const me = {
   name: "Ben",
@@ -661,10 +702,11 @@ me.set("age", 30);
 me.size; // => 2
 me.set("country", "Belgium");
 me.size; // => 3
+```
 Curry
 
 在别的语言里有Curry的一席之地，但在JS里避免使用。不然会是代码阅读困难。
-
+```js
 // bad
 const sum = a => b => a + b;
 sum(5)(3); // => 8
@@ -672,10 +714,11 @@ sum(5)(3); // => 8
 // good
 const sum = (a, b) => a + b;
 sum(5, 3); // => 8
-可读性
+```
+### 可读性
 
 不要使用自以为是的技巧：
-
+```js
 // bad
 foo || doSomething();
 
@@ -693,10 +736,11 @@ const n = ~~3.14;
 
 // good
 const n = Math.floor(3.14);
-代码重用
+```
+### 代码重用
 
 对写些小型、组件化、可重用的方法。
-
+```js
 // bad
 arr[arr.length - 1];
 
@@ -712,10 +756,11 @@ const triple = n => n * 3;
 // good
 const product = (a, b) => a * b;
 const triple = product.bind(null, 3);
-依赖
+```
+### 依赖
 
 减少第三方库的使用。当你无法完成某项工作时可以使用，但不要为了一些能自己实现的小功能就加载一个很大的库。
-
+```js
 // bad
 var _ = require("underscore");
 _.compact(["foo", 0]));
@@ -730,3 +775,4 @@ const union = (...arr) => unique([].concat(...arr));
 compact(["foo", 0]);
 unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
+```
