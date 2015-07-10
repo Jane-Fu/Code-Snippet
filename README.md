@@ -1,3 +1,6 @@
+### 放一些杂七杂八的东西，主要是一些代码或代码相关
+
+
 # 一份很受欢迎的前端代码指南
 
 原文地址：[https://github.com/bendc/frontend-guidelines/blob/master/README.md](https://github.com/bendc/frontend-guidelines/blob/master/README.md)
