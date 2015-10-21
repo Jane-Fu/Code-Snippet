@@ -7,52 +7,52 @@ var uglify = require('gulp-uglify');
 
 var paths = {
   wipayCss: [
-    '../WiPos/static/Wipos/css/forzen.css',
-    "../WiPos/static/Wipos/css/Wipay.css"
+    '../maelWeb/static/maelWeb/css/forzen.css',
+    "../maelWeb/static/maelWeb/css/Wipay.css"
   ],
-  wiposCss: [
-    '../WiPos/static/Wipos/css/bootstrap.min.css',
-    "../WiPos/static/Wipos/css/Wipos.css"
+  maelWebCss: [
+    '../maelWeb/static/maelWeb/css/bootstrap.min.css',
+    "../maelWeb/static/maelWeb/css/maelWeb.css"
   ],
   wipayScripts:[
-   "../WiPos/static/Wipos/js/touch.js",
-   "../WiPos/static/Wipos/js/Wipay.js"
+   "../maelWeb/static/maelWeb/js/touch.js",
+   "../maelWeb/static/maelWeb/js/Wipay.js"
   ],
-  wiposLess: [
-    '../WiPos/static/Wipos/less/Wipos.less'
+  maelWebLess: [
+    '../maelWeb/static/maelWeb/less/maelWeb.less'
   ],
   wipayLess: [
-    '../WiPos/static/Wipos/less/Wipas.less'
+    '../maelWeb/static/maelWeb/less/Wipas.less'
   ],
-  wiposLessPartials: [
-    '../WiPos/static/Wipos/less/base.less',
-    '../WiPos/static/Wipos/less/login.less',
-    '../WiPos/static/Wipos/less/store.less',
-    '../WiPos/static/Wipos/less/setting.less',
-    '../WiPos/static/Wipos/less/calender.less',
-    '../WiPos/static/Wipos/less/cashier.less',
-    '../WiPos/static/Wipos/less/report.less',
-    '../WiPos/static/Wipos/less/validate.less'
+  maelWebLessPartials: [
+    '../maelWeb/static/maelWeb/less/base.less',
+    '../maelWeb/static/maelWeb/less/login.less',
+    '../maelWeb/static/maelWeb/less/store.less',
+    '../maelWeb/static/maelWeb/less/setting.less',
+    '../maelWeb/static/maelWeb/less/calender.less',
+    '../maelWeb/static/maelWeb/less/cashier.less',
+    '../maelWeb/static/maelWeb/less/report.less',
+    '../maelWeb/static/maelWeb/less/validate.less'
   ],
-  wiposScripts:[
-    "../WiPos/static/Wipos/js/ejs.js",
-    "../WiPos/static/Wipos/js/common.js",
-    "../WiPos/static/Wipos/js/WivalidVal.js",
-    "../WiPos/static/Wipos/js/main.js",
-    "../WiPos/static/Wipos/js/auth_init.js",
-    "../WiPos/static/Wipos/js/login.js",
-    "../WiPos/static/Wipos/js/setting.js",
-    "../WiPos/static/Wipos/js/store.js",
-    "../WiPos/static/Wipos/js/store_edit.js",
-    "../WiPos/static/Wipos/js/cashier.js",
-    "../WiPos/static/Wipos/js/report_detail.js",
-    "../WiPos/static/Wipos/js/report_refund.js",
-    "../WiPos/static/Wipos/js/account.js",
-    "../WiPos/static/Wipos/js/validate.js"
+  maelWebScripts:[
+    "../maelWeb/static/maelWeb/js/ejs.js",
+    "../maelWeb/static/maelWeb/js/common.js",
+    "../maelWeb/static/maelWeb/js/WivalidVal.js",
+    "../maelWeb/static/maelWeb/js/main.js",
+    "../maelWeb/static/maelWeb/js/auth_init.js",
+    "../maelWeb/static/maelWeb/js/login.js",
+    "../maelWeb/static/maelWeb/js/setting.js",
+    "../maelWeb/static/maelWeb/js/store.js",
+    "../maelWeb/static/maelWeb/js/store_edit.js",
+    "../maelWeb/static/maelWeb/js/cashier.js",
+    "../maelWeb/static/maelWeb/js/report_detail.js",
+    "../maelWeb/static/maelWeb/js/report_refund.js",
+    "../maelWeb/static/maelWeb/js/account.js",
+    "../maelWeb/static/maelWeb/js/validate.js"
   ],
-  wipospack : "../WiPos/static/Wipos/pack",
-  wiposcss: "../WiPos/static/Wipos/css",
-  wiposjs : "../WiPos/static/Wipos/js"
+  maelWebpack : "../maelWeb/static/maelWeb/pack",
+  maelWebcss: "../maelWeb/static/maelWeb/css",
+  maelWebjs : "../maelWeb/static/Wipos/js"
 };
 
 gulp.task('wipayjs', function () {
