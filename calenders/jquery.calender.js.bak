@@ -1,0 +1,376 @@
+/**
+ * Created by Daniel.Liu on 14-2-27.
+ */
+	var $ = require('jQuery');
+
+
+	var fillZero = function( _num ){
+		if (_num == undefined ) { 
+			return null;
+		};
+		if ( _num.toString ) {
+				_num = _num.toString();
+		};
+			_num = _num.length == 1 ? "0" + _num : _num;
+			return _num;
+	}
+
+	var Calender = {
+
+		monthName: [
+			"\u4e00\u6708",
+			"\u4e8c\u6708",
+			"\u4e09\u6708",
+			"\u56db\u6708",
+			"\u4e94\u6708",
+			"\u516d\u6708",
+			"\u4e03\u6708",
+			"\u516b\u6708",
+			"\u4e5d\u6708",
+			"\u5341\u6708",
+			"\u5341\u4e00\u6708",
+			"\u5341\u4e8c\u6708"
+		],
+
+		// dayName: [
+		// 	"\u661f\u671f\u65e5",
+		// 	"\u661f\u671f\u4e00",
+		// 	"\u661f\u671f\u4e8c",
+		// 	"\u661f\u671f\u4e09",
+		// 	"\u661f\u671f\u56db",
+		// 	"\u661f\u671f\u4e94",
+		// 	"\u661f\u671f\u516d"
+		// ],
+
+		dayName: [
+			"\u65e5",
+			"\u4e00",
+			"\u4e8c",
+			"\u4e09",
+			"\u56db",
+			"\u4e94",
+			"\u516d"
+		],
+
+		calender: function() {
+			var obj = {},
+				date = new Date();
+
+			obj.today = {
+				day: date.getDay(),
+				date: date.getDate(),
+				month: date.getMonth(),
+				year: date.getFullYear()
+			};
+
+			if (arguments.length && arguments[0]) {
+				var newTime = arguments[0];
+				if (newTime.date != undefined) {
+					date.setDate(newTime.date);
+				} else {
+					date.setDate(1);
+				}
+				if (newTime.year != undefined) {
+					date.setYear(newTime.year);
+				}
+				if (newTime.month != undefined) {
+					date.setMonth(newTime.month);
+				}
+				if (newTime.range) {
+					obj.range = newTime.range;
+				}else{
+					obj.range = [];
+				}
+			};
+
+			obj.mainDay = {
+				day: date.getDay(),
+				date: date.getDate(),
+				month: date.getMonth(),
+				year: date.getFullYear()
+			},
+			obj.month = {
+				sum: (function() {
+					date.setMonth(obj.mainDay.month + 1);
+					date.setDate(0);
+					return date.getDate();
+				})(),
+				firstDay: (function() {
+					date.setDate(1);
+					return date.getDay();
+				})(),
+				month: (function() {
+					return obj.mainDay.month;
+				})(),
+				year: (function() {
+					return obj.mainDay.year;
+				})()
+			},
+			obj.prevMonth = {
+				sum: (function() {
+					date.setMonth(obj.mainDay.month);
+					date.setDate(0);
+					return date.getDate();
+				})(),
+				month: (function() {
+					if (obj.mainDay.month - 1 < 0) {
+						return 11;
+					} else {
+						return obj.mainDay.month - 1;
+					};
+				})(),
+				year: (function() {
+					if (obj.mainDay.month - 1 < 0) {
+						return obj.mainDay.year - 1;
+					} else {
+						return obj.mainDay.year;
+					};
+				})()
+			},
+			obj.nextMonth = {
+				sum: (function() {
+					date.setMonth(obj.mainDay.month + 2);
+					date.setDate(0);
+					return date.getDate();
+				})(),
+				month: (function() {
+					if (obj.mainDay.month + 1 > 11) {
+						return 0;
+					} else {
+						return obj.mainDay.month + 1;
+					};
+				})(),
+				year: (function() {
+					if (obj.mainDay.month + 1 > 11) {
+						return obj.mainDay.year + 1;
+					} else {
+						return obj.mainDay.year;
+					};
+				})()
+			},
+			obj.arr = [];
+			var _weekDay = false;
+			for (var i = 0; i < 42; i++) {
+				if ( i % 7 === 0 || i % 7 === 6) {
+					_weekDay = true;
+				}else{
+					_weekDay = false;
+				};
+				if (i < obj.month.firstDay) {
+					(function(){
+						
+						var _time = obj.prevMonth.year + "-" + fillZero(obj.prevMonth.month + 1) + "-" + fillZero(obj.prevMonth.sum - obj.month.firstDay + i + 1),
+							_getTime = new Date(_time).getTime(),
+							range = obj.range,
+							outDate = '';
+						if( range && (range[0] && _getTime <= range[0]) || (range[1] && _getTime >= range[1]) ) {
+							outDate = ' calender-out-date ';
+						}
+						obj.arr.push({
+							className: _weekDay ? "\"calender-prev calender-week" + outDate + "\"" : "\"calender-prev" + outDate + "\"" ,  
+							date: obj.prevMonth.sum - obj.month.firstDay + i + 1,
+							time: _time,
+							getTime : _getTime
+							
+						});
+					})()					
+				} else if (i < (obj.month.firstDay + obj.month.sum)) {
+					(function(){						
+						var _time = obj.month.year + "-" + fillZero(obj.month.month + 1) + "-" + fillZero(i - obj.month.firstDay + 1),
+							_getTime = new Date(_time).getTime(),
+							range = obj.range,
+							outDate = '';
+						if( range && (range[0] && _getTime <= range[0]) || (range[1] && _getTime >= range[1]) ) {
+							outDate = ' calender-out-date ';
+						}
+						obj.arr.push({
+							className: _weekDay ? "\"calender-current calender-week" + outDate + "\"" : "\"calender-current" + outDate + "\"",
+							date: i - obj.month.firstDay + 1,
+							time: _time,
+							getTime : _getTime
+						});
+					})()
+				} else {
+					(function(){
+						
+						var _time =  obj.nextMonth.year + "-" + fillZero(obj.nextMonth.month + 1) + "-" + fillZero(i - (obj.month.firstDay + obj.month.sum - 1)),
+							_getTime = new Date(_time).getTime(),
+							range = obj.range,
+							outDate = '';
+						if( range && (range[0] && _getTime <= range[0]) || (range[1] && _getTime >= range[1]) ) {
+							outDate = ' calender-out-date ';
+						}
+
+						obj.arr.push({
+							className: _weekDay ? "\"calender-next calender-week" + outDate + "\"" : "\"calender-next" + outDate + "\"",
+							date: i - (obj.month.firstDay + obj.month.sum - 1),
+							time: _time,
+							getTime : _getTime
+						});
+					})()
+				}
+			}
+			return obj;
+		},
+
+		render: function(obj) {
+			var self = this;
+			
+			var str = '<div class="calender-head"><button class="prevYear"> &lt; </button><span>'
+					+ obj.mainDay.year + '</span><button class="nextYear"> &gt; </button><button class="prevMonth"> &lt; </button><span>'
+					+ (obj.mainDay.month  + 1) 
+					+ '</span><button class="nextMonth"> &gt; </button></div>';
+			
+			str = str + "<table><tr>";
+			for(var i = 0,len = self.dayName.length; i < len; i ++) {
+				str = str +  '<td>' + self.dayName[i] + '</td>';
+			}
+
+			str = str + "</tr>";
+
+			for(var i = 0,arr=obj.arr,len = arr.length;i < len; i++){
+				if(i == 0)
+					str = str + '<tr>';
+				else if(i % 7 == 0 && (i + 1) < len){
+					str = str + '</tr><tr>';
+				}
+				str = str + '<td'; 
+				if (arr[i].className){ 
+					str = str + ' class=' + arr[i].className;
+				}
+				str = str + ' data-date=' + arr[i].time + ' data-time=' + arr[i].getTime + '>' + arr[i].date + '</td>';
+			}
+
+			str = str + "</tr></table>";
+
+			return str;
+		}
+	};
+
+	var getObj = function( obj ){
+		var newObj = function(){};
+		newObj.prototype = obj;
+		return new newObj;
+	}
+
+	var layout = {
+		current: null,
+		option: null,
+		element: null,
+		input:null,
+		update: function(_option) {
+			var self = this;
+			if (!_option && self.input.val()) {
+				var inputTime = self.input.val(),
+					arrTime = inputTime.match(/(\d{4})(?:\D?)(\d{2})(?:\D?)(\d{2})/);
+				_option = {
+					year : arrTime[1] * 1,
+					month : arrTime[2] * 1 - 1
+				};
+			}
+			_option = _option || {};
+			if (self.range) {
+				_option.range = self.range;
+			};
+			var _html = Calender.render(current = Calender.calender(_option));
+			self.element.html(_html);
+			self.option = {
+				year: current.mainDay.year,
+				month: current.mainDay.month
+			};
+		},
+		prevMonth: function() {
+			var self = this;
+			if (self.option.month - 1 < 0) {
+				self.option.month = 11;
+				self.option.year = self.option.year - 1;
+			} else {
+				self.option.month = self.option.month - 1;
+			};
+			self.update(self.option);
+		},
+		nextMonth: function() {
+			var self = this;
+			if (self.option.month + 1 > 11) {
+				self.option.month = 0;
+				self.option.year = self.option.year + 1;
+			} else {
+				self.option.month = self.option.month + 1;
+			};
+			self.update(self.option);
+		},
+		prevYear: function() {
+			var self = this;
+			self.option.year = self.option.year - 1;
+			self.update(self.option);
+		},
+		nextYear: function() {
+			var self = this;
+			self.option.year = self.option.year + 1;
+			self.update(self.option);
+		},
+		init: function() {
+			var self = this;
+			if (!arguments.length) {
+				return false;
+			}
+			self.input = arguments[0].input;
+			self.element = arguments[0].element;
+			self.range = arguments[0].range;
+			self.update();
+			self.input.on("click",function(e){
+				e.stopPropagation();
+			});
+			self.element.appendTo("body").hide().on("click", function(e) {
+
+				var $target = $(e.target);
+				if ($target.hasClass('calender-out-date')) {
+					return false;
+				}				
+				if ($target.hasClass('prevMonth')) {
+					self.prevMonth();
+				} else if ($target.hasClass('nextMonth')) {
+					self.nextMonth();
+				} else if ($target.hasClass('prevYear')) {
+					self.prevYear();
+				} else if ($target.hasClass('nextYear')) {
+					self.nextYear();
+				} else if ($target[0].tagName == "TD" && $target.attr("data-date")) {
+					var _date = $target.attr("data-date");
+					self.input.val(_date).trigger("change");
+					self.element.hide();
+				};
+				e.stopPropagation();
+			}).css({
+				"position":"absolute",
+				"top":(function(){
+					return self.input.offset().top + self.input.outerHeight();
+				})(),
+				"left":(function(){
+					return self.input.offset().left;
+				})()
+			});
+			self.input.focus(function(){
+				var $otherCalender = $("body").find(".calender-layout").not(self.element);
+				$otherCalender.hide();
+				self.update();
+				self.element.fadeIn();
+			});
+			$("body").on("click",function(e){
+				self.element.hide();
+			});
+		}
+	};
+	
+	_exports = function(dom,range) {
+		$(dom).each(function() {
+			var $this = $(this),
+				$layout = $("<div class='calender-layout'><div>");
+			var calender = getObj( layout );
+			var option = { input : $this, element : $layout};
+			if(range){
+				option.range = range;
+			}
+			calender.init(option);
+		});
+	}

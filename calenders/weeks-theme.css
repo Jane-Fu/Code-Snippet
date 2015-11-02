@@ -1,0 +1,35 @@
+/* calender */
+.weeks-layout ul,.weeks-layout li, .weeks-layout dl, .weeks-layout dt, .weeks-layout dd {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+}
+.weeks-layout { width: 400px; background: #fff; border: 1px solid #ccc; padding: 5px; border-radius: 3px; box-shadow: 0 0 3px #ccc; font-family: "Times New Roman",Georgia,Serif;   }
+.weeks-header { text-align: center; }
+.weeks-header a { text-decoration: none; color: #ff9660; padding:0 5px; font-weight: bold; font-size: 18px; vertical-align: middle;  }
+.weeks-layout dl {
+	float: left;
+	padding: 3px;
+	width: 60px;
+	cursor: pointer;
+}
+.weeks-layout dl:hover,.weeks-layout dl.current {
+	background: #ff9660;
+	color: #fff;
+}
+.weeks-layout dl:hover dd,.weeks-layout dl.current dd{
+	color: #fff;
+}
+.weeks-layout dt {
+	text-align: center;
+	font-size: 14px;
+}
+.weeks-layout dd {
+	font-size: 10px;
+	text-align: center;
+	color: #666;
+}
+
+
+.hide { display: none; }
+/* calender end */

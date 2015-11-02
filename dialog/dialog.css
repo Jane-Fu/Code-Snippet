@@ -1,0 +1,85 @@
+/* alert */
+.hide {
+  display: none;
+}
+.modal-dialog {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  border: 1px solid #e6e6e7;
+  box-shadow: 0 0 3px #eee;
+  background-color: #fff;
+}
+.modal-dialog.on {
+  z-index: 301;
+}
+.modal-dialog.animate {
+  -webkit-animation: bouncein 0.5s 1 forwards;
+  -o-animation: bouncein 0.5s 1 forwards;
+  animation: bouncein 0.5s 1 forwards;
+}
+.modal-content {
+  min-width: 200px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 38px;
+  color: #666;
+  cursor: move;
+}
+.modal-content .modal-header {
+  padding: 0 10px;
+  margin: 0;
+  color: #666;
+  font-size: 18px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.alert-btns {
+  margin-bottom: 30px;
+}
+.alert-btns a {
+  margin: 0 5px;
+}
+.alert-btns a.hide {
+  display: none;
+}
+.alert-close {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  background: #999999;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  display: block;
+  border-radius: 4px 0 0 4px;
+  background: url('./close.png') no-repeat center center;
+}
+.dialog-body {
+  padding: 30px 40px;
+  font-size: 18px;
+}
+.confirm .btn {
+  padding: 0 3em;
+  cursor: pointer;
+  display: inline-block;
+  _zoom: 1;
+  -moz-user-select: none;
+  _display: inline;
+  text-align: center;
+  background-color: #31bb97;
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 0 1.2em;
+  text-decoration: none;
+  font-size: 1em;
+  line-height: 2em;
+}
+.confirm .alert-content {
+  min-width: 200px;
+}
+.confirm .btn::-moz-focus-inner {
+  border: 0 none;
+  padding: 0;
+}

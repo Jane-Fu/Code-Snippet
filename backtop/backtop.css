@@ -1,0 +1,13 @@
+.backtop {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    background: url(icon_top.png) no-repeat;
+    background-position: 0 0;
+    display: block;
+}
+.backtop:hover {
+    background-position: 0 -50px;
+};

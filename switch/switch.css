@@ -1,0 +1,60 @@
+/* switch */
+.switch-checkbox {
+  background-color: #31bb97;
+  display: block;
+  height: 32px;
+  width: 68px;
+  position: relative;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+}
+.switch-checkbox input {
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.switch-checkbox .switch-checkbox-btn {
+  color: #fff;
+}
+.switch-checkbox.off {
+  background-color: #e1e4e9;
+}
+.switch-checkbox.off .switch-checkbox-text {
+  color: #666666;
+}
+.switch-checkbox.off .switch-checkbox-btn {
+  color: #979797;
+  left: 3px;
+}
+.switch-checkbox-text {
+  color: #fff;
+  width: 34px;
+  height: 28px;
+  line-height: 32px;
+  display: inline-block;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.switch-checkbox-btn {
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+  line-height: 32px;
+  display: block;
+  position: absolute;
+  left: 39px;
+  top: 3px;
+  text-align: center;
+  border-radius: 4px;
+  transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+  -o-transition: all 0.5s ease-out 0s;
+}

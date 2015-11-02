@@ -1,0 +1,11 @@
+.toolTipWrap {
+    position: absolute;
+    font-size: 13px;
+    min-width: 70px;
+    max-width: 300px;
+    padding: 2px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+    box-shadow: 0 0 4px #000;
+}

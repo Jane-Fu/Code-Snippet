@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<meta name ="viewport" width="device-width" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/prism.css">
+<link rel="stylesheet" href="./tooltips.css">
+<script src="../libs/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="../libs/prism.js" type="text/javascript"></script>
+<script src="./jquery-tooltips.js" type="text/javascript"></script>
+<title>components</title>
+</head>
+<body>
+    <div class="layout">
+    <h1>Tooltips</h1>
+    <p class="tooltip" title="我是提示">把鼠标移到这出现提示， 默认会获取元素里的'title'的值，如果没有设置title取当前元素文本。</p>
+    <h2>How to use?</h2>
+    <p>引入以下资源</p>
+    <pre><code language="html">&lt;script src="../libs/jquery-1.11.1.min.js" type="text/javascript"&gt;&lt;/script&gt;<br>&lt;script src="./jquery-tooltips.js" type="text/javascript"&gt;&lt;/script&gt;<br>&lt;link rel="stylesheet" href="./tooltips.css"&gt;</code></pre>
+    <p>基本调用</p>
+    <pre><code language="javascript">$('.tooltip').toolTip()</code></pre>
+    <a href="javascript:void(0);" class="backtop"></a>
+    </div>
+    <h2>代码示例：</h2>
+    <p>javascript:</p>
+    <pre><code class="language-javascript">
+;(function($) {
+    var html = '&lt;div class="toolTipWrap">' +
+                    '&lt;div class="toolTipTop">&lt;/div>' +
+                    '&lt;div class="toolTipMid">' +
+                    '&lt;/div>' +
+                    '&lt;div class="toolTipBtm">&lt;/div>' +
+                '&lt;/div>';
+    $.fn.toolTip = function(){
+        $(this).hover(
+            function(event) {
+                this.tip = this.title ? this.title : $(this).text();
+                $dom = $(html);
+                $dom.find(".toolTipMid").text(this.tip);
+                event.stopPropagation();
+
+                var mouseLeft = event.pageX,
+                    mouseTop = event.pageY;
+                //this.title = "";
+                $dom.appendTo("body");
+                this.height = $(this).height();
+                $('.toolTipWrap').css({
+                    left: mouseLeft + 20,
+                    top: mouseTop + 20
+                });
+                $('.toolTipWrap').fadeIn(300);
+            },
+            function() {
+                $('.toolTipWrap').fadeOut(300);
+                $('.toolTipWrap').remove();
+                //this.title = this.tip;
+            }
+        );
+        $(this).mousemove(function(event) {
+            var mouseLeft = event.pageX,
+                mouseTop = event.pageY;
+
+            $('.toolTipWrap').css({
+                left: mouseLeft + 20,
+                top: mouseTop + 20
+            });
+        });
+    };
+})(jQuery);
+    </code></pre>
+    <p>css:</p>
+    <pre><code class="language-css">
+.toolTipWrap {
+    position: absolute;
+    font-size: 13px;
+    min-width: 70px;
+    max-width: 300px;
+    padding: 2px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+    box-shadow: 0 0 4px #000;
+}
+    </code></pre>
+<script>
+$('.tooltip').toolTip();
+</script>
+</body>
+</html>

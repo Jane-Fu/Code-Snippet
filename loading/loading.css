@@ -1,0 +1,35 @@
+/* loading */
+.loading-layout.hide {
+  display: none;
+}
+.loading-bg {
+  z-index: 110;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.01;
+  filter: alpha(opacity=1);
+}
+.loading {
+  z-index: 111;
+  height: 25px;
+  width: 70px;
+  padding: 35px 0 0 0;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  margin-left: -26px;
+  box-shadow: 0 0 3px #000;
+  background: url(./loading.gif) no-repeat center 5px #ffffff;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  font-size: 12px;
+}

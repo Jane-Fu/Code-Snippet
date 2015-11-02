@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>weeks</title>
+        <link rel="stylesheet" href="../css/common.css">
+        <link rel="stylesheet" href="weeks-theme.css">
+        <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="jquery.weeks.js"></script>
+        <script>
+        $(function(){
+            $('.weeks').weeks();
+        });
+        </script>
+    </head>
+    <body>
+        <div class="layout">
+            <h1>工作周组件</h1>
+            <p><input class="weeks" type="text"></p>
+            <p>一款简单的工作周选取组件</p>
+            <h2>How to use?</h2>
+            <p>引入以下资源</p>
+            <pre><code language="html">&lt;script src="../libs/jquery-1.11.1.min.js" type="text/javascript"&gt;&lt;/script&gt;<br>&lt;script src="./jquery.weeks.js" type="text/javascript"&gt;&lt;/script&gt;<br>&lt;link rel="stylesheet" href="./weeks-theme.css"&gt;</code></pre>
+            <p>创建input元素</p>
+            <pre><code language="javascript">&lt;input type="text"&gt;</code></pre>
+            <p>为input元素创建工作周组件  </p>
+            <pre><code language="javascript">$('input').weeks();</code></pre>
+        </div>
+    </body>
+</html>
